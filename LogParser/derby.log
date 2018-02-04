@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Feb 01 21:44:03 IST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0161-52e5-be15-00000d8cf8c8 
-on database directory /home/gabib3b/mycode/git/pyspark/LogParser/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@648d162f 
+Sat Feb 03 21:41:25 IST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0161-5d30-0c9f-0000098037c0 
+on database directory /home/gabib3b/mycode/git/pyspark/LogParser/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@2c9a8ec7 
 Loaded from file:/home/gabib3b/mycode/git/pyspark/LogParser/venv/lib/python3.5/site-packages/pyspark/jars/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_151-b12

@@ -11,7 +11,7 @@ def sequenceToCsv(sequence):
     return  ','.join([str(elem) for elem in sequence])
 
 
-def collectCblockAgencts(inPath, outPath):
+def collectCblockAgencts(inPath, cblockCounterPath, cblockCounterUAPath):
 
     sc = SparkContext('local', 'test')
     spark = HiveContext(sc)
@@ -59,13 +59,25 @@ def collectCblockAgencts(inPath, outPath):
 
     numOfFiles = max(int( numOfRows / NUM_OF_ROWS_IN_FILE), 1)
 
-    blockDataWithAgenctsCSv.repartition(numOfFiles).\
-        write.mode('overwrite').csv(outPath)
+    blockDataWithAgenctsCSv.drop('UA').repartition(numOfFiles). \
+        write.mode('overwrite').format("com.databricks.spark.csv").option("header", "true").save(cblockCounterPath)
+
+
+
+    blockDataWithAgenctsCSv.repartition(numOfFiles). \
+        write.mode('overwrite').format("com.databricks.spark.csv").option("header", "true").save(cblockCounterUAPath)
+
 
 
 
 if __name__ == "__main__":
-    inPath = sys.argv[1]
-    outPath = sys.argv[2]
+    #paramaters
+    #  1 -> input path
+    #  2 2.a output path
+    #  3 2.b output path
 
-    collectCblockAgencts(inPath, outPath)
+    inPath = sys.argv[1]
+    cblockCounterPath = sys.argv[2]
+    cblockCounterUAPath = sys.argv[3]
+
+    collectCblockAgencts(inPath, cblockCounterPath, cblockCounterUAPath)
